@@ -1,0 +1,29 @@
+body,
+.linear {
+    background: linear-gradient(130deg, #3d8ce6, #fff);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.logo {
+    height: auto;
+    width: 50px;
+}
+.text-shadow {
+    text-shadow: 2px 2px 2px hsl(0, 0%, 0%, 50%);
+}
+.gray {
+    color: #c6def9;
+}
+.notfound {
+    background-color: #596164;
+    background-size: cover;
+}
+.form-control:focus {
+    box-shadow: none;
+}
+.hover:hover {
+    text-decoration: underline;
+}
+.secondary {
+    color: #9fa6b2;
+}
