@@ -18,26 +18,33 @@ function LandingPage() {
                             className="object-fit-cover h-auto d-block mx-auto w-75"
                         />
                     </div>
-                    <div className="text-center mt-5 mt-md-0">
+                    <div className="text-end mt-5 mt-md-0">
                         <h1 className="text-light text-shadow">
-                            The <span className="fw-bold">Socials</span>
+                            <span className="fw-bold">Socials</span>
                         </h1>
                         <h4 className="gray fw-bold text-shadow">
                             "Experience the reality of communication through
                             digital transformation."
                         </h4>
 
-                        <Link to="login" className="text-primary">
+                        <Link
+                            to="login"
+                            className="hover text-decoration-none text-primary"
+                        >
                             Login
                         </Link>
                         <span className="text-light mx-2">or</span>
-                        <Link to="signup" className="text-primary">
+                        <Link
+                            to="signup"
+                            className="hover text-decoration-none text-primary"
+                        >
                             Signup
                         </Link>
                     </div>
                 </div>
 
                 <Outlet />
+                <Footer />
             </div>
         </>
     );

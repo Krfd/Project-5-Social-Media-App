@@ -20,7 +20,7 @@ function Login() {
                         <div className="text text-center text-lg-start">
                             <h2 className="text-white">Welcome Back!</h2>
                             <h5 className="text-white">
-                                To keep connected with us please login with your
+                                To keep connected with us please login your
                                 account.
                             </h5>
                         </div>
@@ -32,9 +32,9 @@ function Login() {
                             className="form mt-3 shadow p-5 rounded-3 d-block mx-auto"
                         >
                             <h1 className="fw-bold text-light mb-3">
-                                Login Account
+                                Log in Account
                             </h1>
-                            <div className="d-block d-md-flex gap-1 mb-2">
+                            <div className="d-block mb-2">
                                 <div className="col">
                                     <label
                                         htmlFor="email"
@@ -52,7 +52,7 @@ function Login() {
                                     />
                                 </div>
                             </div>
-                            <div className="d-block d-md-flex gap-1">
+                            <div className="d-block mb-2">
                                 <div className="col">
                                     <label
                                         htmlFor="password"
@@ -70,6 +70,11 @@ function Login() {
                                     />
                                 </div>
                             </div>
+                            <div className="d-block text-light">
+                                <div className="col">
+                                    <input type="checkbox" /> Show Password
+                                </div>
+                            </div>
 
                             <button className="btn btn-primary rounded-5 w-100 mt-3">
                                 Log in
@@ -79,7 +84,7 @@ function Login() {
                                 Don't have an account? {""}
                                 <Link
                                     to="/signup"
-                                    className="hover text-primary"
+                                    className="hover text-primary text-decoration-none"
                                 >
                                     Signup
                                 </Link>
@@ -89,6 +94,7 @@ function Login() {
                 </div>
 
                 <Outlet />
+                <Footer />
             </div>
         </>
     );

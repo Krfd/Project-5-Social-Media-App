@@ -8,11 +8,7 @@ function Footer() {
         <>
             <footer className="text-center text-light mt-auto">
                 <p>
-                    Copyright &copy; 2024. All rights reserved. <br />
-                    Developed By:{" "}
-                    <span className="text-secondary fw-bold">
-                        Karl Fredriech
-                    </span>
+                    &copy; All Rights Reserved. <br />
                 </p>
             </footer>
         </>

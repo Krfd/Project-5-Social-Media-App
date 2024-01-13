@@ -142,7 +142,7 @@ function Signup() {
                                 Already have an account? {""}
                                 <Link
                                     to="/login"
-                                    className="hover text-primary"
+                                    className="hover text-primary text-decoration-none"
                                 >
                                     Login
                                 </Link>
@@ -168,6 +168,7 @@ function Signup() {
                     </div>
                 </div>
                 <Outlet />
+                <Footer />
             </div>
         </>
     );
