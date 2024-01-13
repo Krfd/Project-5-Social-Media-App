@@ -3,10 +3,55 @@ import Prototype from "/prototype.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Footer from "../components/Footer";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, useNavigate, Link } from "react-router-dom";
 import "../Custom.css";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import app from "../config/firebaseConfig";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import "sweetalert2/dist/sweetalert2.css";
+import "sweetalert2/dist/sweetalert2.js";
 
 function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const emptyFields = () => {
+        setEmail("");
+        setPassword("");
+    };
+
+    let navigate = useNavigate();
+
+    const handleLogin = () => {
+        if (email !== "" || password !== "") {
+            const auth = getAuth(app);
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "Logged in successfully",
+                    }).then(() => {
+                        navigate("../home");
+                    });
+                    emptyFields();
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                    emptyFields();
+                });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please fill in all fields",
+            });
+            emptyFields();
+        }
+    };
+
     return (
         <>
             <div className="container-fluid">
@@ -49,6 +94,10 @@ function Login() {
                                         id="email"
                                         className="form-control"
                                         required
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
+                                        value={email}
                                     />
                                 </div>
                             </div>
@@ -67,16 +116,17 @@ function Login() {
                                         id="password"
                                         className="form-control"
                                         required
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        value={password}
                                     />
                                 </div>
                             </div>
-                            <div className="d-block text-light">
-                                <div className="col">
-                                    <input type="checkbox" /> Show Password
-                                </div>
-                            </div>
-
-                            <button className="btn btn-primary rounded-5 w-100 mt-3">
+                            <button
+                                className="btn btn-primary rounded-5 w-100 mt-3"
+                                onClick={handleLogin}
+                            >
                                 Log in
                             </button>
                             <p className="mt-2 text-white text-center">

@@ -18,8 +18,8 @@ function App() {
                     <Route path="/" element={<LandingPage />} />
                     <Route path="login" element={<Login />} />
                     <Route path="signup" element={<Signup />} />
-                    <Route element={<Layout />}>
-                        <Route path="home" element={<Home />} />
+                    <Route path="./" element={<Layout />}>
+                        <Route index path="home" element={<Home />} />
                         <Route path="messages" element={<Messages />} />
                         <Route path="notification" element={<Notification />} />
                         <Route path="profile" element={<Profile />} />

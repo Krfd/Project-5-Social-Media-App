@@ -7,11 +7,43 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import app from "../config/firebaseConfig";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import "../Custom.css";
 import "aos/dist/aos.css";
 
 function Layout() {
+    const [authenticated, setAuthenticated] = useState(false);
+    useEffect(() => {
+        const auth = auth(app);
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const uid = user.uid;
+                setAuthenticated(true);
+            }
+        });
+    }, []);
+
+    let navigate = useNavigate();
+    const logout = () => {
+        const auth = getAuth(app);
+        setAuthenticated(false)
+            .then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Logged out successfully",
+                    text: "You are now leaving the page.",
+                });
+                navigate("/login");
+            })
+            .catch((error) => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.message,
+                });
+            });
+    };
+
     return (
         <>
             <main className="fixed-bottom layout">

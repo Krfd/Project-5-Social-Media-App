@@ -4,7 +4,7 @@ import Prototype from "/prototype.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Footer from "../components/Footer";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
     return (
@@ -43,7 +43,6 @@ function LandingPage() {
                     </div>
                 </div>
 
-                <Outlet />
                 <Footer />
             </div>
         </>

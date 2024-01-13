@@ -3,10 +3,87 @@ import Prototype from "/prototype.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Footer from "../components/Footer";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import "sweetalert2/dist/sweetalert2.css";
+import "sweetalert2/dist/sweetalert2.js";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 import "../Custom.css";
+import app from "../config/firebaseConfig";
+import {
+    createUserWithEmailAndPassword,
+    getAuth,
+    updateProfile,
+} from "firebase/auth";
 
 function Signup() {
+    const [first, setFirst] = useState("");
+    const [last, setLast] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmpassword] = useState("");
+
+    const emptyFields = () => {
+        setFirst("");
+        setLast("");
+        setEmail("");
+        setPhone("");
+        setPassword("");
+        setConfirmpassword("");
+    };
+
+    const handleSignup = () => {
+        if (
+            first !== "" ||
+            last !== "" ||
+            email !== "" ||
+            phone !== "" ||
+            password !== "" ||
+            confirmPassword !== ""
+        ) {
+            if (password === confirmPassword) {
+                const auth = getAuth(app);
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+
+                        // Display the credential of a user
+                        updateProfile(auth.currentUser, {
+                            displayName: first + " " + last,
+                        });
+
+                        Swal.fire({
+                            icon: "success",
+                            title: "Account created successfully",
+                        });
+                        emptyFields();
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                        Swal.fire({
+                            icon: "error",
+                            title: error.message,
+                        });
+                        emptyFields();
+                    });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: " Passwords do not match",
+                });
+                emptyFields();
+            }
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please fill in all fields",
+            });
+            emptyFields();
+        }
+    };
+
     return (
         <>
             <div className="container-fluid">
@@ -35,6 +112,10 @@ function Signup() {
                                         id="first"
                                         className="form-control text-secondary"
                                         required
+                                        onChange={(e) =>
+                                            setFirst(e.target.value)
+                                        }
+                                        value={first}
                                     />
                                 </div>
 
@@ -52,6 +133,10 @@ function Signup() {
                                         name="last"
                                         className="form-control text-secondary"
                                         required
+                                        onChange={(e) =>
+                                            setLast(e.target.value)
+                                        }
+                                        value={last}
                                     />
                                 </div>
                             </div>
@@ -70,6 +155,10 @@ function Signup() {
                                         id="email"
                                         className="form-control text-secondary"
                                         required
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
+                                        value={email}
                                     />
                                 </div>
                                 <div className="col">
@@ -86,20 +175,13 @@ function Signup() {
                                         id="phone"
                                         className="form-control text-secondary"
                                         required
+                                        onChange={(e) =>
+                                            setPhone(e.target.value)
+                                        }
+                                        value={phone}
                                     />
                                 </div>
                             </div>
-
-                            {/* <div className="d-block">
-                                <input
-                                    type="text"
-                                    name="social"
-                                    className="form-control m-2"
-                                    placeholder="Social Links"
-                                    required
-                                />
-                            </div> */}
-
                             <div className="d-block d-lg-flex gap-1">
                                 <div className="col">
                                     <label
@@ -115,6 +197,10 @@ function Signup() {
                                         id="password"
                                         className="form-control text-secondary"
                                         required
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                        value={password}
                                     />
                                 </div>
                                 <div className="col">
@@ -131,10 +217,17 @@ function Signup() {
                                         id="confirmPassword"
                                         className="form-control text-secondary"
                                         required
+                                        onChange={(e) =>
+                                            setConfirmpassword(e.target.value)
+                                        }
+                                        value={confirmPassword}
                                     />
                                 </div>
                             </div>
-                            <button className="btn btn-primary rounded-5 w-100 mt-3">
+                            <button
+                                className="btn btn-primary rounded-5 w-100 mt-3"
+                                onClick={handleSignup}
+                            >
                                 Create
                             </button>
                             <p className="mt-2 text-white text-center">
