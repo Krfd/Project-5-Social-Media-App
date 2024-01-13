@@ -10,7 +10,7 @@ function LandingPage() {
     return (
         <>
             <div className="linear">
-                <div className="d-block d-md-flex flex-md-row-reverse justify-content-center align-items-center px-3 px-md-5 mt-5 mt-md-0 min-vh-100">
+                <div className="d-block d-md-flex flex-md-row-reverse justify-content-center align-items-center px-3 px-md-5 pt-5 mt-md-0 min-vh-100">
                     <div className="prototype ">
                         <img
                             src={Prototype}
