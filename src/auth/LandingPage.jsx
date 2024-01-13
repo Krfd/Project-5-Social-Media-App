@@ -15,7 +15,7 @@ function LandingPage() {
                         <img
                             src={Prototype}
                             alt="Prototype"
-                            className="object-fit-cover h-auto w-75"
+                            className="object-fit-cover h-auto d-block mx-auto w-75"
                         />
                     </div>
                     <div className="text-center mt-5 mt-md-0">
@@ -27,11 +27,11 @@ function LandingPage() {
                             digital transformation."
                         </h4>
 
-                        <Link to="./login" className="text-primary">
+                        <Link to="login" className="text-primary">
                             Login
                         </Link>
                         <span className="text-light mx-2">or</span>
-                        <Link to="./signup" className="text-primary">
+                        <Link to="signup" className="text-primary">
                             Signup
                         </Link>
                     </div>

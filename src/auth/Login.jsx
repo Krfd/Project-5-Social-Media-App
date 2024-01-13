@@ -70,12 +70,19 @@ function Login() {
                             </p>
                         </form>
                     </div>
-                    <div className="d-flex prototype w-100">
+                    <div className="d-block d-lg-flex flex-md-row-reverse align-items-center prototype w-100 p-3 p-lg-5 my-5 my-md-0">
                         <img
                             src={Prototype}
                             alt="Prototype"
-                            className="object-fit-cover h-auto w-75 d-block mx-auto"
+                            className="object-fit-cover h-auto w-50 d-block mx-auto my-3 my-lg-0"
                         />
+                        <div className="text text-center text-lg-start">
+                            <h2 className="text-white">Welcome Back!</h2>
+                            <h5 className="text-white">
+                                To keep connected with us please login with your
+                                account.
+                            </h5>
+                        </div>
                     </div>
                 </div>
 

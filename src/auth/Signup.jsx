@@ -137,7 +137,7 @@ function Signup() {
                             <button className="btn btn-primary rounded-5 w-100 mt-3">
                                 Create
                             </button>
-                            <p className="mt-2 text-white">
+                            <p className="mt-2 text-white text-center">
                                 {" "}
                                 Already have an account? {""}
                                 <Link
@@ -149,7 +149,7 @@ function Signup() {
                             </p>
                         </form>
                     </div>
-                    <div className="d-block d-lg-flex flex-md-row-reverse align-items-center prototype w-100 p-3 p-lg-5">
+                    <div className="d-block d-lg-flex flex-md-row-reverse align-items-center prototype w-100 p-3 p-lg-5 my-5 my-md-0">
                         <img
                             src={Prototype}
                             alt="Prototype"
