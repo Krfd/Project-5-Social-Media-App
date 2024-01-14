@@ -14,7 +14,7 @@ import "aos/dist/aos.css";
 function Layout() {
     const [authenticated, setAuthenticated] = useState(false);
     useEffect(() => {
-        const auth = auth(app);
+        const auth = getAuth(app);
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 const uid = user.uid;
@@ -46,11 +46,12 @@ function Layout() {
 
     return (
         <>
-            <main className="fixed-bottom layout">
-                <Link className="navbar-brand" to="/">
+            <main className="container-fluid p-5">
+                <Link className="navbar-brand" to="/home">
                     <img src={Logo} alt="Logo" className="logo" />
                 </Link>
-                <nav className="navbar navbar-expand-sm px-3">
+                <Outlet />
+                <nav className="container-fluid fixed-bottom navbar navbar-expand-sm px-3">
                     <div className="container-fluid fixed-bottom">
                         <button
                             className="navbar-toggler"
@@ -67,7 +68,7 @@ function Layout() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item ">
-                                <Link to="/" className="fw-bold nav-link ">
+                                <Link to="/home" className="fw-bold nav-link ">
                                     <i className="fa-solid fa-house"></i>
                                 </Link>
                             </li>
@@ -95,10 +96,6 @@ function Layout() {
                         </ul>
                     </div>
                 </nav>
-                <Outlet />
-                <div className="container mt-auto">
-                    <Footer />
-                </div>
             </main>
         </>
     );

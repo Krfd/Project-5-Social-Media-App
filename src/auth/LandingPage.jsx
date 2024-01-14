@@ -18,7 +18,7 @@ function LandingPage() {
                             className="object-fit-cover h-auto d-block mx-auto w-75"
                         />
                     </div>
-                    <div className="text-end mt-5 mt-md-0">
+                    <div className="text-center text-md-end mt-5 mt-md-0">
                         <h1 className="text-light text-shadow">
                             <span className="fw-bold">Socials</span>
                         </h1>

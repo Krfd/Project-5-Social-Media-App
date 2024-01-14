@@ -3,7 +3,7 @@
 body {
     font-family: "Roboto";
 }
-body,
+.body,
 .linear {
     background: linear-gradient(130deg, #3d8ce6, #fff);
     background-repeat: no-repeat;

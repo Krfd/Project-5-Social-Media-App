@@ -4,10 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Footer from "../components/Footer";
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import "sweetalert2/dist/sweetalert2.css";
-import "sweetalert2/dist/sweetalert2.js";
 import { useState, useEffect } from "react";
-import Swal from "sweetalert2/dist/sweetalert2.js";
+import Swal from "sweetalert2";
 import "../Custom.css";
 import app from "../config/firebaseConfig";
 import {
@@ -89,7 +87,7 @@ function Signup() {
 
     return (
         <>
-            <div className="container-fluid">
+            <div className="linear container-fluid">
                 <div className="d-block d-md-flex justify-content-center align-items-center px-3 px-md-5 mt-5 mt-md-0 min-vh-100">
                     <div className="container">
                         <form

@@ -6,13 +6,16 @@ import Footer from "../components/Footer";
 import { Outlet, useNavigate, Link } from "react-router-dom";
 import "../Custom.css";
 import { useState, useEffect } from "react";
-import Swal from "sweetalert2/dist/sweetalert2.js";
+import Swal from "sweetalert2";
 import app from "../config/firebaseConfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import "sweetalert2/dist/sweetalert2.css";
-import "sweetalert2/dist/sweetalert2.js";
 
 function Login() {
+    if (app) {
+        console.log("firebase initialized");
+    } else {
+        console.log("firebase not initialized");
+    }
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -54,7 +57,7 @@ function Login() {
 
     return (
         <>
-            <div className="container-fluid">
+            <div className="linear container-fluid">
                 <div className="d-block d-md-flex justify-content-center align-items-center px-3 px-md-5 mt-5 mt-md-0 min-vh-100">
                     <div className="d-block d-lg-flex flex-md-row-reverse align-items-center prototype w-100 p-3 p-lg-5 mb-5 mb-md-0">
                         <img
