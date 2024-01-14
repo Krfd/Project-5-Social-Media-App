@@ -33,6 +33,8 @@ function Signup() {
         setConfirmpassword("");
     };
 
+    let navigate = useNavigate();
+
     const handleSignup = () => {
         if (
             first !== "" ||
@@ -57,6 +59,7 @@ function Signup() {
                             icon: "success",
                             title: "Account created successfully",
                         });
+                        navigate("/login");
                         emptyFields();
                     })
                     .catch((error) => {

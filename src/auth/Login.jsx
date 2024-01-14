@@ -34,7 +34,7 @@ function Login() {
                         icon: "success",
                         title: "Logged in successfully",
                     }).then(() => {
-                        navigate("../home");
+                        navigate("./home");
                     });
                     emptyFields();
                 })
@@ -92,7 +92,7 @@ function Login() {
                                         type="email"
                                         name="email"
                                         id="email"
-                                        className="form-control"
+                                        className="form-control text-secondary"
                                         required
                                         onChange={(e) =>
                                             setEmail(e.target.value)
@@ -114,7 +114,7 @@ function Login() {
                                         type="password"
                                         name="password"
                                         id="password"
-                                        className="form-control"
+                                        className="form-control text-secondary"
                                         required
                                         onChange={(e) =>
                                             setPassword(e.target.value)

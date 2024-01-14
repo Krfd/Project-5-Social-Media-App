@@ -18,13 +18,12 @@ function App() {
                     <Route path="/" element={<LandingPage />} />
                     <Route path="login" element={<Login />} />
                     <Route path="signup" element={<Signup />} />
-                    <Route path="./" element={<Layout />}>
+                    <Route path="/" element={<Layout />}>
                         <Route index path="home" element={<Home />} />
                         <Route path="messages" element={<Messages />} />
                         <Route path="notification" element={<Notification />} />
                         <Route path="profile" element={<Profile />} />
                     </Route>
-
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
